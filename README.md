@@ -8,6 +8,7 @@ To compile:
 2. Call build.bat
 
 
+Remarks:
 - This is the first iteration of the game, but I will continue to improve it.
 - The game was programmed as a prototype, with a focus on development speed, so the code is very simple and unoptimized.
 - The image loading only accepts uncompressed bmp files.
