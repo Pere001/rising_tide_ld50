@@ -1,5 +1,5 @@
 # Rising Tide
-A 2D survival game made from scratch in C++ in 25 days.
+A 2D survival game made C++ in 25 days with no libraries or engines.
 Compiled with MSVC.
 
 Download the game:
