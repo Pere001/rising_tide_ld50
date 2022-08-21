@@ -1,11 +1,10 @@
 # Rising Tide
 A 2D survival game made C++ in 25 days with no libraries or engines.
-Compiled with MSVC.
 
 Download the game:
 https://github.com/Pere001/rising_tide_ld50_executable/blob/main/Rising%20Tide.rar
 
-To compile:
+To compile (MSVC):
 1. Run the compiler from your command-line, which should look something like this:
    call "C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\vcvarsall.bat" x64
 2. Call build.bat
