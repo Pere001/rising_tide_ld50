@@ -6,34 +6,34 @@
 
 
 enum render_command_type{
-	Render_Clear,
+    Render_Clear,
 
-	Render_Rect,
-	Render_ColoredQuad,
-	Render_Triangle,
-	Render_Circle,
-	Render_TexQuad,
-	Render_String,
+    Render_Rect,
+    Render_ColoredQuad,
+    Render_Triangle,
+    Render_Circle,
+    Render_TexQuad,
+    Render_String,
 
-	Render_RectLine,
-	Render_TriangleLine,
-	Render_CircleLine,
-	Render_Line,
+    Render_RectLine,
+    Render_TriangleLine,
+    Render_CircleLine,
+    Render_Line,
 
-	Render_Map,
+    Render_Map,
 };
 
 struct render_command{
-	render_command_type type;
-	u8 *data; // interpreted differently depending on type.
+    render_command_type type;
+    u8 *data; // interpreted differently depending on type.
 };
 
 #define MAX_RENDER_COMMANDS_PER_DEPTH 2048
 #define NUM_RENDER_DEPTHS 100
 struct renderer_state{
-	memory_stack commandsData;
-	render_command commands[NUM_RENDER_DEPTHS][MAX_RENDER_COMMANDS_PER_DEPTH];
-	s32 numCommands[NUM_RENDER_DEPTHS];
+    memory_stack commandsData;
+    render_command commands[NUM_RENDER_DEPTHS][MAX_RENDER_COMMANDS_PER_DEPTH];
+    s32 numCommands[NUM_RENDER_DEPTHS];
 };
 
 
