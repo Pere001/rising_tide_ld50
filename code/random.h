@@ -392,39 +392,39 @@ static s32 globalRandomNext = 0; // This must always be < ArrayCount(globalRando
 //
 
 inline u8 RandomU8(){
-	s32 count = ArrayCount(globalRandomTable);
-	AssertRange(0, globalRandomNext, ArrayCount(globalRandomTable) - 1);
-	u8 result = globalRandomTable[globalRandomNext];
-	globalRandomNext = (globalRandomNext + 1) % ArrayCount(globalRandomTable);
-	return result;
+    s32 count = ArrayCount(globalRandomTable);
+    AssertRange(0, globalRandomNext, ArrayCount(globalRandomTable) - 1);
+    u8 result = globalRandomTable[globalRandomNext];
+    globalRandomNext = (globalRandomNext + 1) % ArrayCount(globalRandomTable);
+    return result;
 }
 inline u16 RandomU16(){
-	AssertRange(0, globalRandomNext, ArrayCount(globalRandomTable) - 1);
-	if (globalRandomNext + 2 >= ArrayCount(globalRandomTable)){
-		globalRandomNext -= ArrayCount(globalRandomTable) - 2;
-	}
-	u16 result = *(u16 *)(globalRandomTable + globalRandomNext);
-	globalRandomNext += 2;
-	return result;
+    AssertRange(0, globalRandomNext, ArrayCount(globalRandomTable) - 1);
+    if (globalRandomNext + 2 >= ArrayCount(globalRandomTable)){
+        globalRandomNext -= ArrayCount(globalRandomTable) - 2;
+    }
+    u16 result = *(u16 *)(globalRandomTable + globalRandomNext);
+    globalRandomNext += 2;
+    return result;
 }
 inline u32 RandomU32(){
-	AssertRange(0, globalRandomNext, ArrayCount(globalRandomTable) - 1);
-	if (globalRandomNext + 4 >= ArrayCount(globalRandomTable)){
-		globalRandomNext -= ArrayCount(globalRandomTable) - 4;
-	}
-	u32 result = *(u32 *)(globalRandomTable + globalRandomNext);
-	globalRandomNext += 4;
-	return result;
+    AssertRange(0, globalRandomNext, ArrayCount(globalRandomTable) - 1);
+    if (globalRandomNext + 4 >= ArrayCount(globalRandomTable)){
+        globalRandomNext -= ArrayCount(globalRandomTable) - 4;
+    }
+    u32 result = *(u32 *)(globalRandomTable + globalRandomNext);
+    globalRandomNext += 4;
+    return result;
 }
 inline s32 RandomS32(){
-	s32 result = (s32)RandomU32();
-	return result;
+    s32 result = (s32)RandomU32();
+    return result;
 }
 
 // 0 and 1 are inclusive
 inline f32 Random01(){
-	f32 result = (f32)RandomU32() / 4294967295.f; // magic number is 2^32 -1
-	return result;
+    f32 result = (f32)RandomU32() / 4294967295.f; // magic number is 2^32 -1
+    return result;
 }
 
 
@@ -434,33 +434,33 @@ inline f32 Random01(){
 
 // Return range: [min, max] (both inclusive)
 inline f32 RandomRange(f32 min, f32 max){
-	f32 t = Random01();
-	f32 result = (1.f - t)*min + max*t;
-	return result;
+    f32 t = Random01();
+    f32 result = (1.f - t)*min + max*t;
+    return result;
 }
 // Return range: ~[min, max]
 // WARNING: The result could actually be outside [min, max] when min or max are huge (>2^24) because of precision issues.
 inline s32 RandomRangeS32(s32 min, s32 max){
-	s32 result = (s32)RandomRange((f32)min, (f32)max);
-	return result;
+    s32 result = (s32)RandomRange((f32)min, (f32)max);
+    return result;
 }
 // Return range: ~[min, max]
 // WARNING: The result could actually be outside [min, max] when min or max are huge (>2^24) because of precision issues.
 inline u32 RandomRangeU32(u32 min, u32 max){
-	u32 result = (u32)RandomRange((f32)min, (f32)max);
-	return result;
+    u32 result = (u32)RandomRange((f32)min, (f32)max);
+    return result;
 }
 // Return range: [min, max]
 inline u16 RandomRangeU16(u16 min, u16 max){
-	u32 randomBits = RandomU32();
-	u16 result = min + (u16)(randomBits % ((u32)max - (u32)min + 1));
-	return result;
+    u32 randomBits = RandomU32();
+    u16 result = min + (u16)(randomBits % ((u32)max - (u32)min + 1));
+    return result;
 }
 // Return range: [min, max]
 inline u8 RandomRangeU8(u8 min, u8 max){
-	u32 randomBits = RandomU32();
-	u8 result = min + (u8)(randomBits % ((u32)max - (u32)min + 1));
-	return result;
+    u32 randomBits = RandomU32();
+    u8 result = min + (u8)(randomBits % ((u32)max - (u32)min + 1));
+    return result;
 }
 
 
@@ -470,42 +470,42 @@ inline u8 RandomRangeU8(u8 min, u8 max){
 
 // Random number in range [0, max] (both inclusive)
 inline f32 Random(f32 max){
-	return RandomRange(0, max);
+    return RandomRange(0, max);
 }
 // Return range: [0, max]
 inline s32 RandomS32(s32 max){
-	s32 result = (s32)RandomRange(0.f, (f32)max);
-	return result;
+    s32 result = (s32)RandomRange(0.f, (f32)max);
+    return result;
 }
 // Return range: [0, max]
 inline u32 RandomU32(u32 max){
-	u32 result = (u32)RandomRange(0.f, (f32)max);
-	return result;
+    u32 result = (u32)RandomRange(0.f, (f32)max);
+    return result;
 }
 // Return range: [0, max]
 inline u16 RandomU16(u16 max){
-	u32 randomBits = RandomU32();
-	u16 result = (u16)(randomBits % ((u32)max + 1));
-	return result;
+    u32 randomBits = RandomU32();
+    u16 result = (u16)(randomBits % ((u32)max + 1));
+    return result;
 }
 // Return range: [0, max]
 inline u8 RandomU8(u8 max){
-	u32 randomBits = RandomU32();
-	u8 result = (u8)(randomBits % ((u32)max + 1));
-	return result;
+    u32 randomBits = RandomU32();
+    u8 result = (u8)(randomBits % ((u32)max + 1));
+    return result;
 }
 
 
 // If chance <=0 the result will always be false.
 // If chance >=1 the result will always be true.
 inline b32 RandomChance(f32 chance){
-	// 16777216 is 2^24, and is the last consecutive integer perfectly representable by a float.
-	u32 randomBits = RandomU32() & 16777215; // 24 random bits.
-	f32 randomNumber = (f32)randomBits; // Range: [0, 16777215]
-	f32 threshold = chance*16777216.f;  // Range: [0, 16777216]
-	if (randomNumber < threshold)
-		return true;
-	return false;
+    // 16777216 is 2^24, and is the last consecutive integer perfectly representable by a float.
+    u32 randomBits = RandomU32() & 16777215; // 24 random bits.
+    f32 randomNumber = (f32)randomBits; // Range: [0, 16777215]
+    f32 threshold = chance*16777216.f;  // Range: [0, 16777216]
+    if (randomNumber < threshold)
+        return true;
+    return false;
 }
 
 
@@ -517,8 +517,8 @@ u32 Hash(u32 x) {
 }
 
 void ShuffleRandomState(u32 seed){
-	u32 h = Hash(seed ^ RandomU32());
-	globalRandomNext = h % ArrayCount(globalRandomTable);
+    u32 h = Hash(seed ^ RandomU32());
+    globalRandomNext = h % ArrayCount(globalRandomTable);
 }
 
 #endif
